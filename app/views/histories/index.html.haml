@@ -1,0 +1,31 @@
+%h1 Listing histories
+
+%table
+  %tr
+    %th Issue
+    %th Staff
+    %th Reply
+    %th Old status
+    %th New status
+    %th Old owner
+    %th New owner
+    %th
+    %th
+    %th
+
+  - @histories.each do |history|
+    %tr
+      %td= history.issue_id
+      %td= history.staff_id
+      %td= history.reply
+      %td= history.old_status_id
+      %td= history.new_status_id
+      %td= history.old_owner_id
+      %td= history.new_owner_id
+      %td= link_to 'Show', history
+      %td= link_to 'Edit', edit_history_path(history)
+      %td= link_to 'Destroy', history, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New History', new_history_path

@@ -1,0 +1,30 @@
+= form_for @issue do |f|
+  -if @issue.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@issue.errors.count + @client.errors.count, "error")} prohibited this issue from being saved:"
+      %ul
+        - @issue.errors.full_messages.each do |msg|
+          %li= msg
+        - @client.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = label :client, :email
+    = text_field :client, :email
+  .field
+    = label :client, :name
+    = text_field :client, :name
+  .field
+    = label :client, :department
+    = text_field :client, :department
+
+
+  .field
+    = f.label  :subject
+    = f.text_area  :subject
+  .field
+    = f.label  :description
+    = f.text_area :description
+
+  .actions
+    = f.submit 'Save'

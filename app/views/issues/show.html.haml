@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Subject:
+  = @issue.subject
+%p
+  %b Description:
+  = @issue.description
+%p
+  %b Reference:
+  = @issue.reference
+%p
+  %b Client:
+  = @issue.client_id
+%p
+  %b Owner:
+  = @issue.owner_id
+%p
+  %b Status:
+  = @issue.status_id
+
+= link_to 'Edit', edit_issue_path(@issue)
+\|
+= link_to 'Back', issues_path

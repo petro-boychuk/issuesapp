@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Issue:
+  = @history.issue_id
+%p
+  %b Staff:
+  = @history.staff_id
+%p
+  %b Reply:
+  = @history.reply
+%p
+  %b Old status:
+  = @history.old_status_id
+%p
+  %b New status:
+  = @history.new_status_id
+%p
+  %b Old owner:
+  = @history.old_owner_id
+%p
+  %b New owner:
+  = @history.new_owner_id
+
+= link_to 'Edit', edit_history_path(@history)
+\|
+= link_to 'Back', histories_path
