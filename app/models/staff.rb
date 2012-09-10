@@ -10,6 +10,9 @@ class Staff < ActiveRecord::Base
 
   has_many :issues, :foreign_key => :owner_id
 
+  validates_presence_of :email
+  validates_presence_of :name
+
 
 
 end
