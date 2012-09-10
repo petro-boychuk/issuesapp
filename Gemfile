@@ -46,3 +46,4 @@ gem 'jquery-rails'
 
 
 gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
+gem 'newrelic_rpm'

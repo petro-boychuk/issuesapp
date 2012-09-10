@@ -176,19 +176,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="74" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0">
+            <state line="48" column="18" selection-start="949" selection-end="949" vertical-scroll-proportion="1.2543554">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="raven.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="raven.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/raven.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="22" selection-start="162" selection-end="162" vertical-scroll-proportion="0.10452962">
+            <state line="4" column="22" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -241,8 +241,8 @@
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/admins_controller.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/initializers/raven.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -1015,13 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="74" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="19" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
@@ -1031,7 +1024,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/raven.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="22" selection-start="162" selection-end="162" vertical-scroll-proportion="0.10452962">
+        <state line="4" column="22" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="18" selection-start="949" selection-end="949" vertical-scroll-proportion="1.2543554">
           <folding />
         </state>
       </provider>
