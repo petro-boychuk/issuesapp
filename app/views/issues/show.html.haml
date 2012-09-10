@@ -1,24 +1,34 @@
-%p#notice= notice
 
-%p
-  %b Subject:
-  = @issue.subject
-%p
-  %b Description:
-  = @issue.description
-%p
-  %b Reference:
-  = @issue.reference
-%p
-  %b Client:
-  = @issue.client_id
-%p
-  %b Owner:
-  = @issue.owner_id
-%p
-  %b Status:
-  = @issue.status_id
+.row
+  .span9
+    %p#notice= notice
 
-= link_to 'Edit', edit_issue_path(@issue)
-\|
-= link_to 'Back', issues_path
+    %p
+      %h1
+        = @issue.subject
+    %p
+      %b Description:
+      = @issue.description
+    %p
+      %b Reference:
+      = @issue.reference
+    %p
+      %b Client:
+      = @issue.client.name
+    %p
+      %b Owner:
+      = @issue.owner.name if @issue.owner
+    %p
+      %b Status:
+      = status_color(@issue.status) if @issue.status
+
+    = render "history"
+
+    = link_to 'Back', root_path, :class => "btn"
+
+  - if staff_signed_in?
+    .span3
+      = render "admin"
+
+
+

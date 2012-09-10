@@ -1,0 +1,23 @@
+-if @issue.history.present?
+  %table.table.table-striped.table-bordered
+    %tr
+      %th
+        Reply
+      %th
+        Owner
+      %th
+        Status
+    - @issue.history.each do |h|
+      %tr
+        %td
+          = h.reply
+        %td
+          -if h.owner_changed?
+            = h.old_owner.name if h.old_owner
+            = "=>"
+            = h.new_owner.name if h.new_owner
+        %td
+          -if h.status_changed?
+            = status_color(h.old_status) if h.old_status
+            = "=>"
+            = status_color(h.new_status) if h.new_status

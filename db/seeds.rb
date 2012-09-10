@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Status.create(:kind => :waiting_staff, :title => "Waiting for Staff Response")
+Status.create(:kind => :waiting_customer, :title => "Waiting for Customer")
+Status.create(:kind => :on_hold, :title => "On Hold")
+Status.create(:kind => :cancelled, :title => "Cancelled")
+Status.create(:kind => :completed, :title => "Completed")
+

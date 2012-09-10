@@ -5,4 +5,7 @@ class Client < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :issues
+
+  validates_format_of :email, :with => /@/
+
 end

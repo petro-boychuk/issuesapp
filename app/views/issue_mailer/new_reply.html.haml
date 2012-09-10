@@ -1,0 +1,12 @@
+%p
+  We have just receiver reply to one of your
+  = link_to "request", issue_url(@issue)
+%p
+  %blockquote
+    = @history.reply
+
+-if @history.status_changed?
+  %p
+    Status changed:
+    =@issue.status.title
+

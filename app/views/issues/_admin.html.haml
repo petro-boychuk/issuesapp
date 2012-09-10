@@ -1,0 +1,23 @@
+%h2 Admin actions
+= form_tag histories_path do
+
+  = hidden_field :issue, :id
+
+  .control-group
+    = label :history, :reply, :class => 'control-label'
+    .controls
+      = text_area :history, :reply
+
+  .control-group
+    = label :history, :staff, :class => 'control-label'
+    .controls
+      = select(:staff, :id, Staff.all.map{|s| [s.name, s.id] }, :selected => @issue.owner_id, :include_blank => true)
+
+  .control-group
+    = label :history, :status, :class => 'control-label'
+    .controls
+      = select(:status, :id, Status.all.map{|s| [s.title, s.id] }, :selected => @issue.status_id)
+
+  .form-actions
+    = submit_tag "Respond", :class => "btn btn-primary"
+

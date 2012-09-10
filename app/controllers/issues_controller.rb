@@ -1,39 +1,47 @@
 class IssuesController < ApplicationController
 
-
-  before_filter :authenticate_staff!, :except => [:index, :show, :new]
+  before_filter :authenticate_staff!, :except => [:show, :new, :create]
 
   # GET /issues
-  # GET /issues.json
   def index
-    @issues = Issue.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @issues }
+    @filter = params[:filter]
+    @filter = @filter.to_sym if @filter
+
+    if Issue.filters.include?(@filter)
+      @issues = Issue.send(@filter)
+    else
+      @filter = :all
+      @issues = Issue.all
     end
+
+
+
+    if params[:search]
+      @search_term = params[:search][:search]
+      #TODO Try to find issue this this id, else try to find issue with this text
+
+      if issue = Issue.reference_search(@search_term)
+        redirect_to issue
+      else
+        @issues = Issue.term_search @search_term
+
+        @filter = :none
+      end
+    end
+
   end
 
   # GET /issues/1
-  # GET /issues/1.json
   def show
     @issue = Issue.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @issue }
-    end
   end
 
   # GET /issues/new
-  # GET /issues/new.json
   def new
     @issue = Issue.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @issue }
-    end
+    @client = Client.new
   end
 
   # GET /issues/1/edit
@@ -43,22 +51,21 @@ class IssuesController < ApplicationController
   end
 
   # POST /issues
-  # POST /issues.json
   def create
 
     @client = Client.new(params[:client])
-
-    if !@client.valid?
-      render action: "new"
-      return
-    end
-
-    params[:issue][:client] = @client
-    params[:issue][:status] = Status.initial_status
-
     @issue = Issue.new(params[:issue])
 
-    if @issue.save
+    valid_client = @client.valid?
+
+    @issue.client = @client
+    @issue.status = Status.initial_status
+
+    valid_issue = @issue.valid?
+
+    if valid_issue && valid_issue && @issue.save && @client.save
+
+      IssueMailer.received_request(@issue).deliver
       redirect_to @issue, notice: 'Issue was successfully created.'
     else
       render action: "new"
@@ -68,7 +75,6 @@ class IssuesController < ApplicationController
   end
 
   # PUT /issues/1
-  # PUT /issues/1.json
   def update
     @issue = Issue.find(params[:id])
 
@@ -78,7 +84,7 @@ class IssuesController < ApplicationController
     valid_issue = @issue.update_attributes(params[:issue])
 
     if  valid_client && valid_issue
-      redirect_to @issue, notice: 'Issue was successfully updated.'
+      redirect_to @issue, :hash => @issue.access_hash, notice: 'Issue was successfully updated.'
     else
       render :action => :edit
 
@@ -87,14 +93,10 @@ class IssuesController < ApplicationController
   end
 
   # DELETE /issues/1
-  # DELETE /issues/1.json
   def destroy
     @issue = Issue.find(params[:id])
     @issue.destroy
 
-    respond_to do |format|
-      format.html { redirect_to issues_url }
-      format.json { head :no_content }
-    end
+    redirect_to issues_url
   end
 end

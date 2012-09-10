@@ -1,13 +1,18 @@
 Issuesapp::Application.routes.draw do
 
-
+  authenticated :staff do
+    root :to => "issues#index"
+  end
   devise_for :staffs
+
+  root :to => "issues#new"
+
 
   resources :histories
 
   resources :issues
 
-  resources :staffs
+  #resources :staffs
 
   resources :statuses
 

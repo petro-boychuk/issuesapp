@@ -1,4 +1,4 @@
-= form_for @issue do |f|
+= form_for @issue, :html => {:class => "form-horizontal"} do |f|
   -if @issue.errors.any?
     #error_explanation
       %h2= "#{pluralize(@issue.errors.count + @client.errors.count, "error")} prohibited this issue from being saved:"
@@ -8,23 +8,28 @@
         - @client.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = label :client, :email
-    = text_field :client, :email
-  .field
-    = label :client, :name
-    = text_field :client, :name
-  .field
-    = label :client, :department
-    = text_field :client, :department
+  .control-group
+    = label :client, :email, :class => 'control-label'
+    .controls
+      = text_field :client, :email
+  .control-group
+    = label :client, :name , :class => 'control-label'
+    .controls
+      = text_field :client, :name
+  .control-group
+    = label :client, :department, :class => 'control-label'
+    .controls
+      = text_field :client, :department
 
 
-  .field
-    = f.label  :subject
-    = f.text_area  :subject
-  .field
-    = f.label  :description
-    = f.text_area :description
+  .control-group
+    = f.label  :subject, :class => 'control-label'
+    .controls
+      = f.text_area  :subject, :rows => 3
+  .control-group
+    = f.label  :description, :class => 'control-label'
+    .controls
+      = f.text_area :description, :rows => 5
 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn btn-primary"

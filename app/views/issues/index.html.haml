@@ -1,6 +1,21 @@
 %h1 Listing issues
 
-%table
+%ul.nav.nav-pills
+  -active = (@filter == :all)? "active" : ""
+  %li{:class => active}
+    =link_to t(:all)
+  - Issue.filters.each do |f|
+    -active = (f == @filter)? "active" : ""
+    %li{:class => active}
+      =link_to t(f), :filter => f
+
+  %li
+    =form_tag issues_path, :method => :get, :class => "form-search" do
+      =text_field :search, :search, :placeholder => "issue id or search term", :value => @search_term
+      =submit_tag "Search", :class => "btn"
+
+
+%table.table.table-striped
   %tr
     %th Subject
     %th Description
@@ -8,22 +23,24 @@
     %th Client
     %th Owner
     %th Status
+    %th Created at
     %th
     %th
     %th
 
   - @issues.each do |issue|
     %tr
-      %td= issue.subject
-      %td= issue.description
+      %td= link_to issue.subject, issue
+      %td= link_to issue.description, issue
       %td= issue.reference
-      %td= issue.client_id
-      %td= issue.owner_id
-      %td= issue.status_id
-      %td= link_to 'Show', issue
-      %td= link_to 'Edit', edit_issue_path(issue)
-      %td= link_to 'Destroy', issue, :confirm => 'Are you sure?', :method => :delete
+      %td= issue.client.name
+      %td= issue.owner.name if issue.owner
+      %td= status_color(issue.status)
+      %td= issue.created_at.to_s(:short)
+      %td= link_to 'Show', issue, :class => "btn"
+      %td= link_to 'Edit', edit_issue_path(issue),  :class => "btn btn-primary"
+      %td= link_to 'Destroy', issue, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
 
 %br
 
-= link_to 'New Issue', new_issue_path
+= link_to 'New Issue', new_issue_path, :class => "btn"
