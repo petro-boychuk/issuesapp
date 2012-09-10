@@ -44,7 +44,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if @staff.save
-        format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
+        format.html { redirect_to admin_path(@staff), notice: 'Staff was successfully created.' }
         format.json { render json: @staff, status: :created, location: @staff }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if @staff.update_attributes(params[:staff])
-        format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
+        format.html { redirect_to admin_path(@staff), notice: 'Staff was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
