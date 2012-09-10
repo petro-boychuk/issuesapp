@@ -1,0 +1,21 @@
+%h1 Listing staffs
+
+%table
+  %tr
+    %th Email
+    %th Name
+    %th
+    %th
+    %th
+
+  - @staffs.each do |staff|
+    %tr
+      %td= staff.email
+      %td= staff.name
+      %td= link_to 'Show', admin_path(staff)
+      %td= link_to 'Edit', edit_admin_path(staff)
+      %td= link_to 'Destroy', admin_path(staff), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Staff', new_admin_path

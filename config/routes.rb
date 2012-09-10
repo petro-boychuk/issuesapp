@@ -12,7 +12,7 @@ Issuesapp::Application.routes.draw do
 
   resources :issues
 
-  #resources :staffs
+  resources :admins
 
   resources :statuses
 

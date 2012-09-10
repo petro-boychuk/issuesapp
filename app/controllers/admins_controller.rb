@@ -1,4 +1,4 @@
-class StaffsController < ApplicationController
+class AdminsController < ApplicationController
   # GET /staffs
   # GET /staffs.json
   def index
@@ -76,7 +76,7 @@ class StaffsController < ApplicationController
     @staff.destroy
 
     respond_to do |format|
-      format.html { redirect_to staffs_url }
+      format.html { redirect_to admins_url }
       format.json { head :no_content }
     end
   end
