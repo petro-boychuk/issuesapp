@@ -23,7 +23,7 @@ Issuesapp::Application.configure do
       :port                 => 587,
       :domain               => "typoscript.org.ua",
       :user_name            => "eater@typoscript.org.ua",
-      :password             => "goo#SuperUser",
+      :password             => "",
       :authentication       => "plain",
       :enable_starttls_auto => true
   }
