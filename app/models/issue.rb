@@ -58,7 +58,7 @@ class Issue < ActiveRecord::Base
   def generate_reference
     issue = Issue.last
     id = "1"
-    id = issue.id if issue
+    id = issue.id + 1 if issue
     result = "ABC-#{id.to_s.rjust(6, "0")}"
     result
   end

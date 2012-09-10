@@ -69,4 +69,14 @@ Issuesapp::Application.configure do
 
   config.action_mailer.default_url_options = {:host => "http://still-shore-3642.herokuapp.com/" }
 
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "typoscript.org.ua",
+      :user_name            => "heroku@typoscript.org.ua",
+      :password             => "herokupassword",
+      :authentication       => "plain",
+      :enable_starttls_auto => true
+  }
+
 end
