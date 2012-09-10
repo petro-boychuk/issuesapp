@@ -5,6 +5,7 @@ gem 'rails', '3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'mysql2'
 gem 'pg'
 
 
@@ -25,7 +26,7 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
-gem 'haml-rails', '>= 0.3.4', :group => :development
+gem 'haml-rails', '>= 0.3.4'
 gem 'devise'
 
 gem 'jquery-rails'
